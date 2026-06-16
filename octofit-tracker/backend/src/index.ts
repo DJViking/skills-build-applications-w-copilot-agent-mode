@@ -1,6 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes';
+import teamRoutes from './routes/teamRoutes';
+import workoutRoutes from './routes/workoutRoutes';
+import activityRoutes from './routes/activityRoutes';
+import leaderboardRoutes from './routes/leaderboardRoutes';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -12,6 +16,10 @@ app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
 // API routes
 app.use('/api/users', userRoutes);
+app.use('/api/teams', teamRoutes);
+app.use('/api/workouts', workoutRoutes);
+app.use('/api/activities', activityRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
 
 mongoose.connect(MONGO_URI)
   .then(() => {
